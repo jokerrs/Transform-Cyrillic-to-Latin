@@ -31,8 +31,8 @@ function CyrToLat($string, $type = NULL) {
             $string = str_replace($search, $replace, $string);
         }
         $string = mb_strtolower($string, "UTF-8");
-        $search = array( ' ', ',', '!', '?', '/', '"', "'", '=', '\\', '/', ';', ':', '(', ')', '$', '%', '&', '^', '*', '#', '<', '>', '+' );
-        $replace = array( '-', '', '', '', '', '', '', '-', '', '', '-', '-', '-', '-', 'dollar', 'percent', 'and', '-', 'star', 'hash-tag', '-', '-', 'plus' );
+        $search = array( ' ', ',', '!', '?', '/', '"', "'", '=', '\\', '/', ';', ':', '(', ')', '$', '%', '&', '^', '*', '#', '<', '>', '+', '`' );
+        $replace = array( '-', '', '', '', '', '', '', '-', '', '', '-', '-', '-', '-', 'dollar', 'percent', 'and', '-', 'star', 'hash-tag', '-', '-', 'plus', '' );
         $string = str_replace($search, $replace, $string);
         
         // Check for email
