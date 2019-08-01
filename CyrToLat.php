@@ -41,11 +41,9 @@ function CyrToLat($string, $type = NULL) {
             $replace = array('(dot)','(at)');
             $string = str_replace($search, $replace, $string);
         }
-
-        // check again for double --
-        $search = array('---------','--------','-------','------','-----','----','---','--');
-        $replace = array('-','-','-','-','-','-','-','-');
-        $string = str_replace($search, $replace, $string);
+        
+        // remove duplicate -
+        $string = preg_replace('~-+~', '-', $string);
         // removing last -
         $string = rtrim($string,"-");
         // removing first -
