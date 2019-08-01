@@ -1,14 +1,14 @@
 <?php
 /**
- ***************************************
- * @author JokerCMS | Nemanja Jeremic  *
- * @license GNU                        *
- * @version 1                          *
- ***************************************
- * @param $string                      *
- * @param $type ShortLatin|url|null    *
- * @return mixed|string                *
- ***************************************
+ *********************************************
+ * @author JokerCMS | Nemanja Jeremic        *
+ * @license GNU                              *
+ * @version 1                                *
+ *********************************************
+ * @param $string                            *
+ * @param $type ShortLatin|url|email|null    *
+ * @return mixed|string                      *
+ *********************************************
  */
 
 function CyrToLat($string, $type = NULL) {
@@ -23,11 +23,25 @@ function CyrToLat($string, $type = NULL) {
         $string = str_replace($search, $replace, $string);
     }
     // But if is type == 'url' we change also few more caracters
-    if ( $type == 'url' ) {
+    if ( $type == 'url' || $type == 'email') {
+
+        if($type == 'url'){
+            $search = array('.','@','_');
+            $replace = array('-','at','-');
+            $string = str_replace($search, $replace, $string);
+        }
         $string = mb_strtolower($string, "UTF-8");
-        $search = array( ' ', ',', '!', '?', '/', '"', "'", '_', '=', '\\', '/', ';', ':', '(', ')', '$', '%', '&', '@', '^', '*', '#', '<', '>', '+' );
-        $replace = array( '-', '', '', '', '', '', '', '-', '-', '', '', '-', '-', '-', '-', 'dollar', 'percent', 'and', 'at', '-', 'star', 'hash-tag', '-', '-', 'plus' );
+        $search = array( ' ', ',', '!', '?', '/', '"', "'", '=', '\\', '/', ';', ':', '(', ')', '$', '%', '&', '^', '*', '#', '<', '>', '+' );
+        $replace = array( '-', '', '', '', '', '', '', '-', '', '', '-', '-', '-', '-', 'dollar', 'percent', 'and', '-', 'star', 'hash-tag', '-', '-', 'plus' );
         $string = str_replace($search, $replace, $string);
+        
+        // Check for email
+        if($type == 'email'){
+            $search = array('.','@');
+            $replace = array('(dot)','(at)');
+            $string = str_replace($search, $replace, $string);
+        }
+
         // check again for double --
         $search = array('---------','--------','-------','------','-----','----','---','--');
         $replace = array('-','-','-','-','-','-','-','-');
@@ -36,6 +50,7 @@ function CyrToLat($string, $type = NULL) {
         $string = rtrim($string,"-");
         // removing first -
         $string = ltrim($string, "-");
-    }
+        
+        }
     return $string;
 }
