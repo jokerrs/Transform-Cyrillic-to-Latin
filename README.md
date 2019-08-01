@@ -20,3 +20,11 @@ Just include "CyrToLat.php" file in you'r project and use it simply
     
     echo CyrToLat('Неки текст на ћирилици', 'url');
     //OUTPUT: neki-tekst-na-cirilici
+   
+#####  Cyrillic to Latin email
+    
+    echo CyrToLat('емаил@домен.цом', 'email');
+    //OUTPUT: email(at)domen(dot)com
+   
+    echo CyrToLat('jhon@example.com', 'email');
+    //OUTPUT: jhon(at)example(dot)com
