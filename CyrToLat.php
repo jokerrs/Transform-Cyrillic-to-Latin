@@ -34,6 +34,8 @@ function CyrToLat($string, $type = NULL) {
         $string = str_replace($search, $replace, $string);
         // removing last -
         $string = rtrim($string,"-");
+        // removing first -
+        $string = ltrim($string, "-");
     }
     return $string;
 }
