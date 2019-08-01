@@ -17,7 +17,7 @@ function CyrToLat($string, $type = NULL) {
     $replace = array( 'lj', 'nj', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'š', 'đ', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'č', 'ć', 'z', 'z', 'dž', 'c', 'v', 'b', 'n', 'm', 'Lj', 'Nj', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'P', 'Š', 'Đ', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Č', 'Ć', 'Z', 'Z', 'Dž', 'C', 'V', 'B', 'N', 'M' );
     $string = str_replace($search, $replace, $string);
     // If we need short latin we will use type ShortLatin
-    if ( $type == 'ShortLatin' || $type == 'url' ) {
+    if ( $type == 'ShortLatin' || $type == 'url'  || $type == 'email' ) {
         $search = array( 'ž', 'š', 'đ', 'ć', 'č', 'dž', 'Ž', 'Š', 'Đ', 'Ć', 'Č', 'Dž' );
         $replace = array( 'z', 's', 'dj', 'c', 'c', 'dz', 'Z', 'S', 'Dj', 'C', 'C', 'Dz' );
         $string = str_replace($search, $replace, $string);
