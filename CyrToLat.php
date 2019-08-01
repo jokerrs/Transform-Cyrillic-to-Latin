@@ -32,6 +32,7 @@ function CyrToLat($string, $type = NULL) {
         $search = array('--','---','----','-----','------','-------','--------','---------');
         $replace = array('-','-','-','-','-','-','-','-');
         $string = str_replace($search, $replace, $string);
+        // removing last -
         $string = rtrim($string,"-");
     }
     return $string;
