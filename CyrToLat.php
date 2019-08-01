@@ -29,7 +29,7 @@ function CyrToLat($string, $type = NULL) {
         $replace = array( '-', '', '', '', '', '', '', '-', '-', '', '', '-', '-', '-', '-', 'dollar', 'percent', 'and', 'at', '-', 'star', 'hash-tag', '-', '-', 'plus' );
         $string = str_replace($search, $replace, $string);
         // check again for double --
-        $search = array('--','---','----','-----','------','-------','--------','---------');
+        $search = array('---------','--------','-------','------','-----','----','---','--');
         $replace = array('-','-','-','-','-','-','-','-');
         $string = str_replace($search, $replace, $string);
         // removing last -
