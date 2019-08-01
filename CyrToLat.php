@@ -1,13 +1,15 @@
 <?php
-/***************************************
- * @author JokerCMS | Nemanja Jeremic
- * @license GNU
- * @version 1
+/**
  ***************************************
- * @param $string
- * @param $type ShortLatin|url|null
- * @return mixed|string
- ***************************************/
+ * @author JokerCMS | Nemanja Jeremic  *
+ * @license GNU                        *
+ * @version 1                          *
+ ***************************************
+ * @param $string                      *
+ * @param $type ShortLatin|url|null    *
+ * @return mixed|string                *
+ ***************************************
+ */
 
 function CyrToLat($string, $type = NULL) {
 
