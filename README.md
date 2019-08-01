@@ -4,7 +4,7 @@
 Simply transform Cyrillic to latin. Also you can use it for making a link
 
 ## Usage
-Just include this film in you'r project and use it simply
+Just include "CyrToLat.php" file in you'r project and use it simply
  
  ##### Normal Cyrillic to Latin
    
