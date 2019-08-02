@@ -6,49 +6,56 @@
  * @version 1                                *
  *********************************************
  * @param $string                            *
- * @param $type ShortLatin|url|email|null    *
+ * @param $type null                         *
  * @return mixed|string                      *
  *********************************************
  */
 
 function CyrToLat($string, $type = NULL) {
     // By default we just transform Cry To Latin
-    $search = array( 'љ', 'њ', 'е', 'р', 'т', 'з', 'у', 'и', 'о', 'п', 'ш', 'ђ', 'а', 'с', 'д', 'ф', 'г', 'х', 'ј', 'к', 'л', 'ч', 'ћ', 'ж', 'ѕ', 'џ', 'ц', 'в', 'б', 'н', 'м', 'Љ', 'Њ', 'Е', 'Р', 'Т', 'З', 'У', 'И', 'О', 'П', 'Ш', 'Ђ', 'А', 'С', 'Д', 'Ф', 'Г', 'Х', 'Ј', 'К', 'Л', 'Ч', 'Ћ', 'Ж', 'Ѕ', 'Џ', 'Ц', 'В', 'Б', 'Н', 'М' );
-    $replace = array( 'lj', 'nj', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', 'š', 'đ', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'č', 'ć', 'z', 'z', 'dž', 'c', 'v', 'b', 'n', 'm', 'Lj', 'Nj', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'P', 'Š', 'Đ', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Č', 'Ć', 'Z', 'Z', 'Dž', 'C', 'V', 'B', 'N', 'M' );
-    $string = str_replace($search, $replace, $string);
+    $CyrToLat =  array('љ' => 'lj', 'њ' => 'nj', 'е' => 'e', 'р' => 'r', 'т' => 't', 'з' => 'z', 'у' => 'u', 'и' => 'i', 'о' => 'o', 'п' => 'p',
+        'ш' => 'š', 'ђ' => 'đ', 'а' => 'a', 'с' => 's', 'д' => 'd', 'ф' => 'f', 'г' => 'g', 'х' => 'h', 'ј' => 'j', 'к' => 'k',
+        'л' => 'l', 'ч' => 'č', 'ћ' => 'ć', 'ж' => 'ž', 'ѕ' => 's', 'џ' => 'dž', 'ц' => 'c', 'в' => 'v', 'б' => 'b', 'н' => 'n',
+        'м' => 'm', 'Љ' => 'Lj', 'Њ' => 'Nj', 'Е' => 'E', 'Р' => 'R', 'Т' => 'T', 'З' => 'Z', 'У' => 'U', 'И' => 'I', 'О' => 'O',
+        'П' => 'P', 'Ш' => 'Š', 'Ђ' => 'Đ', 'А' => 'A', 'С' => 'S', 'Д' => 'D', 'Ф' => 'F', 'Г' => 'G', 'Х' => 'H', 'Ј' => 'J',
+        'К' => 'K', 'Л' => 'L', 'Ч' => 'Č', 'Ћ' => 'Ć', 'Ж' => 'Ž', 'Ѕ' => 'S', 'Џ' => 'Dž', 'Ц' => 'C', 'В' => 'V', 'Б' => 'B',
+        'Н' => 'N', 'М' => 'M');
+    $string = strtr($string, $CyrToLat);
+
     // If we need short latin we will use type ShortLatin
     if ( $type == 'ShortLatin' || $type == 'url'  || $type == 'email' ) {
-        $search = array( 'ž', 'š', 'đ', 'ć', 'č', 'dž', 'Ž', 'Š', 'Đ', 'Ć', 'Č', 'Dž' );
-        $replace = array( 'z', 's', 'dj', 'c', 'c', 'dz', 'Z', 'S', 'Dj', 'C', 'C', 'Dz' );
-        $string = str_replace($search, $replace, $string);
+        $ShortLatin = array('ž' => 'z', 'š' => 's', 'đ' => 'dj', 'ć' => 'c', 'č' => 'c', 'dž' => 'dz',
+            'Ž' => 'Z', 'Š' => 'S', 'Đ' => 'Dj', 'Ć' => 'C', 'Č' => 'C', 'Dž' => 'Dz');
+        $string = strtr($string, $ShortLatin);
     }
-    // But if is type == 'url' we change also few more caracters
+    // But if is type == 'url' we change also few more characters
     if ( $type == 'url' || $type == 'email') {
 
         if($type == 'url'){
-            $search = array('.','@','_');
-            $replace = array('-','at','-');
-            $string = str_replace($search, $replace, $string);
+            $url = array('.' => '-','@' => 'at', '_' => '-');
+            $string = strtr($string, $url);
         }
         $string = mb_strtolower($string, "UTF-8");
-        $search = array( ' ', ',', '!', '?', '/', '"', "'", '=', '\\', '/', ';', ':', '(', ')', '$', '%', '&', '^', '*', '#', '<', '>', '+', '`', '~' );
-        $replace = array( '-', '', '', '', '', '', '', '-', '', '', '-', '-', '-', '-', 'dollar', 'percent', 'and', '-', 'star', 'hash-tag', '-', '-', 'plus', '', '-' );
-        $string = str_replace($search, $replace, $string);
-        
+        $CyrToLat = array(' ' => '-', ','  => '', '!'  => '', '?'  => '', '/'  => '',
+            '"'  => '', "'"  => '', '='  => '-', '\\'  => '', '~'  => '-',
+            ';'  => '-', ':'  => '-', '('  => '-', ')'  => '-', '$'  => '-dollar-',
+            '%'  => '-percent-', '&'  => '-and-', '^'  => '-', '*'  => 'star', '#'  => '-hash-tag-',
+            '<'  => '-', '>'  => '-', '+'  => '-plus-', '`'  => '');
+        $string = strtr($string, $CyrToLat);
+
         // Check for email
         if($type == 'email'){
-            $search = array('.','@');
-            $replace = array('(dot)','(at)');
-            $string = str_replace($search, $replace, $string);
+            $email = array('.' => '(dot)', '@' => '(at)');
+            $string = strtr($string, $email);
         }
-        
+
         // remove duplicate -
         $string = preg_replace('~-+~', '-', $string);
         // removing last -
         $string = rtrim($string,"-");
         // removing first -
         $string = ltrim($string, "-");
-        
-        }
+
+    }
     return $string;
 }
