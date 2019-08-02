@@ -13,7 +13,8 @@
 
 function CyrToLat($string, $type = NULL) {
     // By default we just transform Cry To Latin
-    $CyrToLat =  array('љ' => 'lj', 'њ' => 'nj', 'е' => 'e', 'р' => 'r', 'т' => 't', 'з' => 'z', 'у' => 'u', 'и' => 'i', 'о' => 'o', 'п' => 'p',
+    $CyrToLat =  array(
+    	'љ' => 'lj', 'њ' => 'nj', 'е' => 'e', 'р' => 'r', 'т' => 't', 'з' => 'z', 'у' => 'u', 'и' => 'i', 'о' => 'o', 'п' => 'p',
         'ш' => 'š', 'ђ' => 'đ', 'а' => 'a', 'с' => 's', 'д' => 'd', 'ф' => 'f', 'г' => 'g', 'х' => 'h', 'ј' => 'j', 'к' => 'k',
         'л' => 'l', 'ч' => 'č', 'ћ' => 'ć', 'ж' => 'ž', 'ѕ' => 's', 'џ' => 'dž', 'ц' => 'c', 'в' => 'v', 'б' => 'b', 'н' => 'n',
         'м' => 'm', 'Љ' => 'Lj', 'Њ' => 'Nj', 'Е' => 'E', 'Р' => 'R', 'Т' => 'T', 'З' => 'Z', 'У' => 'U', 'И' => 'I', 'О' => 'O',
@@ -24,7 +25,8 @@ function CyrToLat($string, $type = NULL) {
 
     // If we need short latin we will use type ShortLatin
     if ( $type == 'ShortLatin' || $type == 'url'  || $type == 'email' ) {
-        $ShortLatin = array('ž' => 'z', 'š' => 's', 'đ' => 'dj', 'ć' => 'c', 'č' => 'c', 'dž' => 'dz',
+        $ShortLatin = array(
+        	'ž' => 'z', 'š' => 's', 'đ' => 'dj', 'ć' => 'c', 'č' => 'c', 'dž' => 'dz',
             'Ž' => 'Z', 'Š' => 'S', 'Đ' => 'Dj', 'Ć' => 'C', 'Č' => 'C', 'Dž' => 'Dz');
         $string = strtr($string, $ShortLatin);
     }
@@ -36,7 +38,8 @@ function CyrToLat($string, $type = NULL) {
             $string = strtr($string, $url);
         }
         $string = mb_strtolower($string, "UTF-8");
-        $CyrToLat = array(' ' => '-', ','  => '', '!'  => '', '?'  => '', '/'  => '',
+        $CyrToLat = array(
+        	' ' => '-', ','  => '', '!'  => '', '?'  => '', '/'  => '',
             '"'  => '', "'"  => '', '='  => '-', '\\'  => '', '~'  => '-',
             ';'  => '-', ':'  => '-', '('  => '-', ')'  => '-', '$'  => '-dollar-',
             '%'  => '-percent-', '&'  => '-and-', '^'  => '-', '*'  => 'star', '#'  => '-hash-tag-',
