@@ -1,5 +1,6 @@
 
 
+
 # Transform Cyrillic to Latin
 Simply transform Cyrillic to latin. Also you can use it for making a link
 
@@ -28,3 +29,8 @@ Just include "CyrToLat.php" file in you'r project and use it simply
    
     echo CyrToLat('jhon@example.com', 'email');
     //OUTPUT: jhon(at)example(dot)com
+
+
+
+##### JS version
+[@stojanovic](https://github.com/stojanovic/) -> [Cyrillic to latin converter](https://github.com/stojanovic/cyrillic-to-latin)
