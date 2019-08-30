@@ -11,7 +11,7 @@
  * @param string|NULL $type
  * @return string
  */
-function cyrToLat(string $string, string $type = NULL):string
+function cyrToLat(string $string, ?string $type = null):string
 {
     // By default we just transform Cry To Latin
     $CyrToLat =  array(
