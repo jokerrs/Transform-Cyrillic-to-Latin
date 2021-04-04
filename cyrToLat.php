@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Jeremic Nemanja nemanja@joker.rs
- * @license GNU
+ * @license MIT
  * @version 0.0.8
  */
 
